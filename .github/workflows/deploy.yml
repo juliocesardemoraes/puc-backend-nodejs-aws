@@ -21,11 +21,15 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Deploy to S3
-        run: |
-          aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws s3 sync dist/ s3://s3testpipeline/
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-2
+
+      - name: Deploy static site to S3 bucket
+        run: aws s3 sync src/ s3://s3testpipeline/
 
       - name: Cleanup
         run: rm -rf node_modules dist
