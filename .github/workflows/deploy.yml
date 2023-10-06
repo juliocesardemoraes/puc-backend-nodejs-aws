@@ -23,7 +23,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: code-coverage-report
-          path: coverage\lcov-report\index.html
+          path: coverage/lcov-report/
 
   lint:
     runs-on: ubuntu-latest
@@ -64,7 +64,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: test-results
-          path: coverage\lcov-report\index.html
+          path: coverage/lcov-report/
 
       - name: Deploy static site to S3 bucket
         run: |
