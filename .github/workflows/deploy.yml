@@ -7,8 +7,11 @@ on:
 
 jobs:
   prevtest:
-    - name: Create artifacts folder
-      run: mkdir -p ${{ github.workspace }}/artifacts/lint-results
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create artifacts folder
+        run: mkdir -p ${{ github.workspace }}/artifacts/lint-results
 
   jest:
     runs-on: ubuntu-latest
