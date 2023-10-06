@@ -11,15 +11,7 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
-        with:
-          node-version: "14"
-
-      - name: Install dependencies
-        run: npm install
+        uses: actions/checkout@v1
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -29,7 +21,10 @@ jobs:
           aws-region: us-east-2
 
       - name: Deploy static site to S3 bucket
-        run: aws s3 sync src/ s3://s3testpipeline/
+        run: |
+          aws --version
+          aws configure list
+          aws s3 sync . s3://s3testpipeline --debug
 
       - name: Cleanup
         run: rm -rf node_modules dist
