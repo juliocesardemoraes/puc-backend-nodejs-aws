@@ -2,10 +2,10 @@
   "name": "nodejs",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "jest",
-    "start": "nodemon src/index.js",
+    "start": "nodemon src/server.js",
     "lint": "eslint ."
   },
   "keywords": [],
