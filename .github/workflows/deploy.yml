@@ -19,6 +19,12 @@ jobs:
       - name: Run jest tests
         run: npm run test
 
+      - name: Upload test results
+        uses: actions/upload-artifact@v2
+        with:
+          name: test-results
+          path: path/to/test-results
+
   lint:
     runs-on: ubuntu-latest
     steps:
