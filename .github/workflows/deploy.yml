@@ -6,13 +6,6 @@ on:
       - main
 
 jobs:
-  prevtest:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Create artifacts folder
-        run: mkdir -p ${{ github.workspace }}/artifacts/lint-results
-
   jest:
     runs-on: ubuntu-latest
     needs: prevtest
